@@ -3,6 +3,7 @@ package br.com.klauskpm.checkthatbook;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.GridView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -27,8 +28,13 @@ public class BooksActivity extends AppCompatActivity {
             ArrayList<Book> books = new ArrayList<Book>();
             for (int i = 0; i < booksItems.length(); i++) {
                 books.add(Book.extractFromJSON(booksItems.getJSONObject(i)));
-                Log.d("CHECKOUT", "onCreate: " + books.get(i).getTitle());
             }
+
+            BookAdapter adapter = new BookAdapter(this, books);
+            GridView grid = (GridView) findViewById(R.id.list);
+
+            grid.setAdapter(adapter);
+            grid.setEmptyView(findViewById(R.id.empty_list));
         } catch (JSONException e) {
             Log.d("ruim", "onCreate: deu ruim");
             e.printStackTrace();
