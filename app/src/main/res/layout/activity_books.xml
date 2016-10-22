@@ -12,17 +12,19 @@
         android:layout_height="48dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
+        android:background="@android:color/white"
         android:drawableEnd="@drawable/ic_search_black_36dp"
         android:hint="@string/search_hint"
-        android:background="@android:color/white"
-        android:paddingStart="@dimen/activity_horizontal_margin"
-        android:paddingEnd="@dimen/activity_horizontal_margin"/>
+        android:paddingEnd="@dimen/activity_horizontal_margin"
+        android:paddingStart="@dimen/activity_horizontal_margin" />
 
-    <ListView
+    <GridView
         android:id="@+id/list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/search_bar" />
+        android:layout_below="@+id/search_bar"
+        android:columnWidth="160dp"
+        android:numColumns="2" />
 
     <TextView
         android:layout_width="wrap_content"
