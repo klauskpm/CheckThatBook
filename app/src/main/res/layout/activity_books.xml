@@ -1,22 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/activity_books"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="br.com.klauskpm.checkthatbook.BooksActivity">
 
-    <EditText
+    <SearchView
         android:id="@+id/search_bar"
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:background="@android:color/white"
-        android:drawableEnd="@drawable/ic_search_black_36dp"
-        android:hint="@string/search_hint"
+        android:queryHint="@string/search_hint"
         android:paddingEnd="@dimen/activity_horizontal_margin"
-        android:paddingStart="@dimen/activity_horizontal_margin" />
+        android:paddingStart="@dimen/activity_horizontal_margin"/>
 
     <GridView
         android:id="@+id/list"
@@ -38,7 +36,6 @@
         android:visibility="gone" />
 
     <ProgressBar
-        android:id="@+id/spinner_loader"
         style="@style/Base.Widget.AppCompat.ProgressBar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
