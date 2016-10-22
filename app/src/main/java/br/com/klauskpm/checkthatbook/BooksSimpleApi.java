@@ -15,8 +15,8 @@ public class BooksSimpleApi extends QueryUtils {
     private final static String BASE_URL = "https://www.googleapis.com/books/v1/";
 
     public BooksSimpleApi() {
-        connectTimeout = 20000;
-        readTimeout = 15000;
+        CONNECT_TIMEOUT = 20000;
+        READ_TIMEOUT = 15000;
     }
 
     public static ArrayList<Book> listVolumes(String q) {

@@ -18,9 +18,9 @@ import static android.content.ContentValues.TAG;
  */
 
 public class QueryUtils {
-    public static int connectTimeout = 15000;
-    public static int readTimeout = 10000;
-    public static String charset = "UTF-8";
+    public static int CONNECT_TIMEOUT = 15000;
+    public static int READ_TIMEOUT = 10000;
+    public static String CHARSET = "UTF-8";
 
     private static final String GET = "GET";
 
@@ -63,8 +63,8 @@ public class QueryUtils {
 
         try {
             urlConnection = (HttpURLConnection) url.openConnection();
-            urlConnection.setReadTimeout(readTimeout);
-            urlConnection.setConnectTimeout(connectTimeout);
+            urlConnection.setReadTimeout(READ_TIMEOUT);
+            urlConnection.setConnectTimeout(CONNECT_TIMEOUT);
             urlConnection.setRequestMethod(method);
             urlConnection.connect();
 
@@ -92,7 +92,7 @@ public class QueryUtils {
         StringBuilder output = new StringBuilder();
         if (inputStream != null) {
             InputStreamReader streamReader = new InputStreamReader(inputStream,
-                    Charset.forName(charset));
+                    Charset.forName(CHARSET));
             BufferedReader reader = new BufferedReader(streamReader);
             String line = reader.readLine();
             while (line != null) {
