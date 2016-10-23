@@ -12,15 +12,23 @@ import java.util.ArrayList;
 /**
  * Created by Kazlauskas on 22/10/2016.
  */
-
 public class BooksSimpleApi extends QueryUtils {
     private final static String BASE_URL = "https://www.googleapis.com/books/v1/";
 
+    /**
+     * Instantiates a new Books simple api.
+     */
     public BooksSimpleApi() {
         CONNECT_TIMEOUT = 20000;
         READ_TIMEOUT = 15000;
     }
 
+    /**
+     * List volumes array list.
+     *
+     * @param q the q
+     * @return the array list
+     */
     public static ArrayList<Book> listVolumes(String q) {
         return BooksVolumes.listVolumes(q);
     }

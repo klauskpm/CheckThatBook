@@ -15,6 +15,9 @@ import android.widget.SearchView.OnQueryTextListener;
 
 import java.util.ArrayList;
 
+/**
+ * The type Books activity.
+ */
 public class BooksActivity extends AppCompatActivity implements LoaderCallbacks<ArrayList<Book>> {
 
     private static String TAG = "KAZLAUSKAS";
@@ -60,11 +63,20 @@ public class BooksActivity extends AppCompatActivity implements LoaderCallbacks<
         searchView.setOnQueryTextListener(mOnQueryTextListener);
     }
 
+    /**
+     * Verify if it is connected to the internet
+     *
+     * @return true if it's connected and false if it's not
+     */
     private boolean isConnected() {
         NetworkInfo networkInfo = mConnectivityManager.getActiveNetworkInfo();
         return networkInfo != null && networkInfo.isConnected();
     }
 
+    /**
+     * Init the loader
+     * @param query to search
+     */
     private void initLoader(String query) {
         Log.d(TAG, "initLoader");
 

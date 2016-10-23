@@ -9,7 +9,6 @@ import java.util.ArrayList;
 /**
  * Created by Kazlauskas on 22/10/2016.
  */
-
 public class Book {
     private String mThumbnailLink;
     private String mTitle;
@@ -22,6 +21,18 @@ public class Book {
 
     private final static String BRL_CURRENCY_CODE = "BRL";
 
+    /**
+     * Instantiates a new Book.
+     *
+     * @param mThumbnailLink the thumbnail link
+     * @param mTitle         the title
+     * @param mAuthors       the authors
+     * @param mPrice         the price
+     * @param mPreviousPrice the previous price
+     * @param mBuyLink       the buy link
+     * @param mInfoLink      the info link
+     * @param mCurrencyCode  the currency code
+     */
     public Book(String mThumbnailLink, String mTitle, ArrayList<String> mAuthors, Double mPrice,
                 Double mPreviousPrice, String mBuyLink, String mInfoLink, String mCurrencyCode) {
         this.mThumbnailLink = mThumbnailLink;
@@ -34,38 +45,83 @@ public class Book {
         this.mCurrencyCode = mCurrencyCode;
     }
 
+    /**
+     * Gets thumbnail link.
+     *
+     * @return the thumbnail link
+     */
     public String getThumbnailLink() {
         return mThumbnailLink;
     }
 
+    /**
+     * Gets title.
+     *
+     * @return the title
+     */
     public String getTitle() {
         return mTitle;
     }
 
+    /**
+     * Gets authors.
+     *
+     * @return the authors
+     */
     public ArrayList<String> getAuthors() {
         return mAuthors;
     }
 
+    /**
+     * Gets price.
+     *
+     * @return the price
+     */
     public Double getPrice() {
         return mPrice;
     }
 
+    /**
+     * Gets previous price.
+     *
+     * @return the previous price
+     */
     public Double getPreviousPrice() {
         return mPreviousPrice;
     }
 
+    /**
+     * Gets buy link.
+     *
+     * @return the buy link
+     */
     public String getBuyLink() {
         return mBuyLink;
     }
 
+    /**
+     * Gets info link.
+     *
+     * @return the info link
+     */
     public String getInfoLink() {
         return mInfoLink;
     }
 
+    /**
+     * Gets currency code.
+     *
+     * @return the currency code
+     */
     public String getCurrencyCode() {
         return mCurrencyCode;
     }
 
+    /**
+     * Gets currency symbol.
+     *
+     * @return the currency symbol
+     */
     public String getCurrencySymbol() {
         String symbol;
         switch (mCurrencyCode) {
@@ -81,6 +137,13 @@ public class Book {
         return symbol;
     }
 
+    /**
+     * Extract from json book.
+     *
+     * @param bookJSON the book json
+     * @return the book
+     * @throws JSONException the json exception
+     */
     public static Book extractFromJSON(JSONObject bookJSON) throws JSONException {
         // Volume info
         JSONObject volumeInfo = bookJSON.getJSONObject("volumeInfo");

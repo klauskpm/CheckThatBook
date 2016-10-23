@@ -16,8 +16,13 @@ import java.util.List;
 /**
  * Created by Kazlauskas on 22/10/2016.
  */
-
 public class BookAdapter extends ArrayAdapter<Book> {
+    /**
+     * Instantiates a new Book adapter.
+     *
+     * @param context the context
+     * @param objects the objects
+     */
     public BookAdapter(Context context, List<Book> objects) {
         super(context, 0, objects);
     }
@@ -80,10 +85,25 @@ public class BookAdapter extends ArrayAdapter<Book> {
     }
 
     private class ViewHolder {
+        /**
+         * The Thumbnail.
+         */
         ImageView thumbnail;
+        /**
+         * The Title.
+         */
         TextView title;
+        /**
+         * The Authors.
+         */
         TextView authors;
+        /**
+         * The Price.
+         */
         TextView price;
+        /**
+         * The Previous price.
+         */
         TextView previousPrice;
     }
 }

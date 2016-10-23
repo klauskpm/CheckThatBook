@@ -16,14 +16,29 @@ import static android.content.ContentValues.TAG;
 /**
  * Created by Kazlauskas on 22/10/2016.
  */
-
 public class QueryUtils {
+    /**
+     * The constant CONNECT_TIMEOUT.
+     */
     protected static int CONNECT_TIMEOUT = 15000;
+    /**
+     * The constant READ_TIMEOUT.
+     */
     protected static int READ_TIMEOUT = 10000;
+    /**
+     * The constant CHARSET.
+     */
     protected static String CHARSET = "UTF-8";
 
     private static final String GET = "GET";
 
+    /**
+     * Request string.
+     *
+     * @param stringUrl the string url
+     * @param method    the method
+     * @return the string
+     */
     protected static String request(String stringUrl, String method) {
         URL url = createUrl(stringUrl);
         String response = null;
@@ -36,10 +51,22 @@ public class QueryUtils {
         return response;
     }
 
+    /**
+     * Request get string.
+     *
+     * @param stringUrl the string url
+     * @return the string
+     */
     protected static String requestGet(String stringUrl) {
         return request(stringUrl, GET);
     }
 
+    /**
+     * Create url url.
+     *
+     * @param stringUrl the string url
+     * @return the url
+     */
     protected static URL createUrl(String stringUrl) {
         URL url = null;
 
@@ -52,6 +79,14 @@ public class QueryUtils {
         return url;
     }
 
+    /**
+     * Make http request string.
+     *
+     * @param url    the url
+     * @param method the method
+     * @return the string
+     * @throws IOException the io exception
+     */
     protected static String makeHttpRequest(URL url, String method) throws IOException {
         if (url == null) {
             return null;
@@ -88,6 +123,13 @@ public class QueryUtils {
         return response;
     }
 
+    /**
+     * Read from stream string.
+     *
+     * @param inputStream the input stream
+     * @return the string
+     * @throws IOException the io exception
+     */
     protected static String readFromStream(InputStream inputStream) throws IOException {
         StringBuilder output = new StringBuilder();
         if (inputStream != null) {
