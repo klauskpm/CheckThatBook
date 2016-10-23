@@ -86,10 +86,13 @@ public class BooksActivity extends AppCompatActivity implements LoaderCallbacks<
 
         Log.d(TAG, "initLoader: verifying loader " + loader);
 
-        if (loader != null)
+        if (loader != null) {
+            Log.d(TAG, "initLoader: restart");
             loaderManager.restartLoader(BOOK_LOADER_ID, null, this);
-        else
+        } else {
+            Log.d(TAG, "initLoader: init");
             loaderManager.initLoader(BOOK_LOADER_ID, null, this);
+        }
     }
 
     @Override
