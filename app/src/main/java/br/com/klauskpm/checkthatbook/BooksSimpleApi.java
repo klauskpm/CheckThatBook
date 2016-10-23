@@ -1,6 +1,8 @@
 package br.com.klauskpm.checkthatbook;
 
 
+import android.util.Log;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -29,13 +31,17 @@ public class BooksSimpleApi extends QueryUtils {
         private final static int MAX_RESULTS = 10;
         private final static String SHOW_PREORDERS = "false";
 
-        public static ArrayList<Book> listVolumes(String query) {
+        private static ArrayList<Book> listVolumes(String query) {
             String url = BooksSimpleApi.BASE_URL + COLLECTION_URL;
 
-            String response = requestGet(url + "?q=" + query +
+            String urlFinal = url + "?q=" + query +
                     "&download=" + DOWNLOAD +
                     "&&maxResults=" + MAX_RESULTS +
-                    "&showPreorders=" + SHOW_PREORDERS);
+                    "&showPreorders=" + SHOW_PREORDERS;
+
+            Log.d("KAZLAUSKAS", "listVolumes: " + urlFinal);
+
+            String response = requestGet(urlFinal);
 
             ArrayList<Book> books = new ArrayList<Book>();
 

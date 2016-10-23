@@ -6,7 +6,7 @@
     tools:context="br.com.klauskpm.checkthatbook.BooksActivity">
 
     <SearchView
-        android:id="@+id/search_bar"
+        android:id="@+id/search_query"
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:layout_alignParentStart="true"
@@ -20,7 +20,7 @@
         android:id="@+id/list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/search_bar"
+        android:layout_below="@+id/search_query"
         android:numColumns="2"
         android:clipToPadding="false"
         android:verticalSpacing="16dp"

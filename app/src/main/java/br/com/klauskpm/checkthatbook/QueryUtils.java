@@ -18,13 +18,13 @@ import static android.content.ContentValues.TAG;
  */
 
 public class QueryUtils {
-    public static int CONNECT_TIMEOUT = 15000;
-    public static int READ_TIMEOUT = 10000;
-    public static String CHARSET = "UTF-8";
+    protected static int CONNECT_TIMEOUT = 15000;
+    protected static int READ_TIMEOUT = 10000;
+    protected static String CHARSET = "UTF-8";
 
     private static final String GET = "GET";
 
-    public static String request(String stringUrl, String method) {
+    protected static String request(String stringUrl, String method) {
         URL url = createUrl(stringUrl);
         String response = null;
 
@@ -36,11 +36,11 @@ public class QueryUtils {
         return response;
     }
 
-    public static String requestGet(String stringUrl) {
+    protected static String requestGet(String stringUrl) {
         return request(stringUrl, GET);
     }
 
-    public static URL createUrl(String stringUrl) {
+    protected static URL createUrl(String stringUrl) {
         URL url = null;
 
         try {
@@ -52,7 +52,7 @@ public class QueryUtils {
         return url;
     }
 
-    public static String makeHttpRequest(URL url, String method) throws IOException {
+    protected static String makeHttpRequest(URL url, String method) throws IOException {
         if (url == null) {
             return null;
         }
@@ -88,7 +88,7 @@ public class QueryUtils {
         return response;
     }
 
-    public static String readFromStream(InputStream inputStream) throws IOException {
+    protected static String readFromStream(InputStream inputStream) throws IOException {
         StringBuilder output = new StringBuilder();
         if (inputStream != null) {
             InputStreamReader streamReader = new InputStreamReader(inputStream,

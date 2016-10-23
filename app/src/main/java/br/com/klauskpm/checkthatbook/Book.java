@@ -86,10 +86,12 @@ public class Book {
         JSONObject volumeInfo = bookJSON.getJSONObject("volumeInfo");
         String thumbnailLink = volumeInfo.getJSONObject("imageLinks").getString("smallThumbnail");
         String title = volumeInfo.getString("title");
-        JSONArray authorsArray = volumeInfo.getJSONArray("authors");
+        JSONArray authorsArray = volumeInfo.optJSONArray("authors");
         ArrayList<String> authors = new ArrayList<String>();
-        for (int i = 0; i < authorsArray.length(); i++) {
-           authors.add(authorsArray.getString(i));
+        if (authorsArray != null) {
+            for (int i = 0; i < authorsArray.length(); i++) {
+                authors.add(authorsArray.getString(i));
+            }
         }
         String infoLink = volumeInfo.getString("infoLink");
 
