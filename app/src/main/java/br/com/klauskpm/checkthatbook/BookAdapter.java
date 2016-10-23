@@ -9,6 +9,8 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -51,6 +53,9 @@ public class BookAdapter extends ArrayAdapter<Book> {
         }
 
         assert book != null;
+
+        Glide.with(getContext()).load(book.getThumbnailLink()).into(holder.thumbnail);
+
         holder.title.setText(book.getTitle());
 
         StringBuilder authorsBuilder = new StringBuilder();
