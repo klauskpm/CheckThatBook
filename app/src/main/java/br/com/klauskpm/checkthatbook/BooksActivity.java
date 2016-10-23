@@ -32,7 +32,7 @@ public class BooksActivity extends AppCompatActivity implements LoaderCallbacks<
         @Override
         public boolean onQueryTextSubmit(String query) {
             if (isConnected()) {
-                Log.d(TAG, "onQueryTextSubmit: entrou na query submit");
+                Log.d(TAG, "onQueryTextSubmit");
                 initLoader(query);
             }
 
