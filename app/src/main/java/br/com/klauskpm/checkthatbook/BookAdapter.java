@@ -1,6 +1,8 @@
 package br.com.klauskpm.checkthatbook;
 
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,6 +20,7 @@ import java.util.List;
  * Created by Kazlauskas on 22/10/2016.
  */
 public class BookAdapter extends ArrayAdapter<Book> {
+
     /**
      * Instantiates a new Book adapter.
      *
@@ -34,6 +37,7 @@ public class BookAdapter extends ArrayAdapter<Book> {
         View root = convertView;
         ViewHolder holder;
         Book book = getItem(position);
+        assert book != null;
 
         if (root == null) {
             root = LayoutInflater.from(getContext()).inflate(
@@ -51,8 +55,6 @@ public class BookAdapter extends ArrayAdapter<Book> {
         } else {
             holder = (ViewHolder) root.getTag();
         }
-
-        assert book != null;
 
         Glide.with(getContext()).load(book.getThumbnailLink()).into(holder.thumbnail);
 
@@ -78,6 +80,13 @@ public class BookAdapter extends ArrayAdapter<Book> {
                 holder.previousPrice.setText(formattedPreviousPrice);
         }
 
+        holder.thumbnail.setOnClickListener(mInfoLinkOnClickListener(book));
+        holder.title.setOnClickListener(mInfoLinkOnClickListener(book));
+        holder.authors.setOnClickListener(mInfoLinkOnClickListener(book));
+
+        holder.price.setOnClickListener(mBuyLinkOnClickListener(book));
+        holder.previousPrice.setOnClickListener(mBuyLinkOnClickListener(book));
+
         return root;
     }
 
@@ -102,5 +111,29 @@ public class BookAdapter extends ArrayAdapter<Book> {
          * The Previous price.
          */
         TextView previousPrice;
+    }
+
+    private View.OnClickListener mInfoLinkOnClickListener(final Book book) {
+        return new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openURL(book.getInfoLink());
+            }
+        };
+    }
+
+    private View.OnClickListener mBuyLinkOnClickListener(final Book book) {
+        return new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openURL(book.getBuyLink());
+            }
+        };
+    }
+
+    private void openURL(String url) {
+        Intent intent = new Intent(Intent.ACTION_VIEW);
+        intent.setData(Uri.parse(url));
+        getContext().startActivity(intent);
     }
 }
