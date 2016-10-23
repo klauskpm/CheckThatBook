@@ -9,7 +9,6 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -64,21 +63,14 @@ public class BookAdapter extends ArrayAdapter<Book> {
         }
         holder.authors.setText(authorsBuilder.toString());
 
-        String currencySymbol;
-        Double price = book.getPrice();
-        Double previousPrice = book.getPreviousPrice();
-        DecimalFormat decimalFormat = new DecimalFormat();
-        decimalFormat.setMinimumFractionDigits(2);
+        String formattedPrice = book.getFormattedPrice();
+        String formattedPreviousPrice = book.getFormattedPreviousPrice();
 
-        if (price != null) {
-            currencySymbol = book.getCurrencySymbol();
-            holder.price.setText(String.format("%s%s", currencySymbol,
-                    decimalFormat.format(price)));
+        if (formattedPrice != null) {
+            holder.price.setText(formattedPrice);
 
-            if (previousPrice != null) {
-                holder.previousPrice.setText(String.format("%s%s", currencySymbol,
-                        decimalFormat.format(previousPrice)));
-            }
+            if (formattedPreviousPrice != null)
+                holder.previousPrice.setText(formattedPreviousPrice);
         }
 
         return root;

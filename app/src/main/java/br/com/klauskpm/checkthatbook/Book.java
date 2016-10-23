@@ -4,6 +4,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 /**
@@ -12,12 +13,15 @@ import java.util.ArrayList;
 public class Book {
     private String mThumbnailLink;
     private String mTitle;
-    private ArrayList<String> mAuthors;
-    private Double mPrice;
-    private Double mPreviousPrice;
-    private String mBuyLink;
+    private ArrayList<String> mAuthors = new ArrayList<String>();
+    private Double mPrice = null;
+    private Double mPreviousPrice = null;
+    private String mBuyLink = null;
     private String mInfoLink;
     private String mCurrencyCode;
+
+    private String mFormattedPrice = null;
+    private String mFormattedPreviousPrice = null;
 
     private final static String BRL_CURRENCY_CODE = "BRL";
 
@@ -43,6 +47,18 @@ public class Book {
         this.mBuyLink = mBuyLink;
         this.mInfoLink = mInfoLink;
         this.mCurrencyCode = mCurrencyCode;
+
+        if (mPrice != null) {
+            String currencySymbol = getCurrencySymbol();
+            DecimalFormat decimalFormat = new DecimalFormat();
+            decimalFormat.setMinimumFractionDigits(2);
+
+            mFormattedPrice = String.format("%s%s", currencySymbol, decimalFormat.format(mPrice));
+
+            if (mPreviousPrice != null)
+                mFormattedPreviousPrice = String.format("%s%s", currencySymbol,
+                        decimalFormat.format(mPreviousPrice));
+        }
     }
 
     /**
@@ -135,6 +151,24 @@ public class Book {
         }
 
         return symbol;
+    }
+
+    /**
+     * Gets formatted price.
+     *
+     * @return the formatted price
+     */
+    public String getFormattedPrice() {
+        return mFormattedPrice;
+    }
+
+    /**
+     * Gets formatted previous price.
+     *
+     * @return the formatted previous price
+     */
+    public String getFormattedPreviousPrice() {
+        return mFormattedPreviousPrice;
     }
 
     /**
