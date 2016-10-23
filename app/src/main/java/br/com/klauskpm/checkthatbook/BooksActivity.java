@@ -9,9 +9,12 @@ import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.View;
 import android.widget.GridView;
+import android.widget.ProgressBar;
 import android.widget.SearchView;
 import android.widget.SearchView.OnQueryTextListener;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
@@ -28,13 +31,19 @@ public class BooksActivity extends AppCompatActivity implements LoaderCallbacks<
     private BookAdapter mAdapter;
     private ConnectivityManager mConnectivityManager;
     private SearchView mSearchView;
+    private ProgressBar mSpinnerLoader;
+    private TextView mEmptyList;
 
     private OnQueryTextListener mOnQueryTextListener = new OnQueryTextListener() {
         @Override
         public boolean onQueryTextSubmit(String query) {
+            mAdapter.clear();
             if (isConnected()) {
                 Log.d(TAG, "onQueryTextSubmit");
                 initLoader(query);
+            } else {
+                mEmptyList.setVisibility(View.VISIBLE);
+                mEmptyList.setText(getString(R.string.no_connection));
             }
 
             mSearchView.clearFocus();
@@ -59,8 +68,11 @@ public class BooksActivity extends AppCompatActivity implements LoaderCallbacks<
         mAdapter = new BookAdapter(this, new ArrayList<Book>());
         GridView grid = (GridView) findViewById(R.id.list);
 
+        mSpinnerLoader = (ProgressBar) findViewById(R.id.spinner_loader);
+
         grid.setAdapter(mAdapter);
-        grid.setEmptyView(findViewById(R.id.empty_list));
+        mEmptyList = (TextView) findViewById(R.id.empty_list);
+        grid.setEmptyView(mEmptyList);
 
         mSearchView.setOnQueryTextListener(mOnQueryTextListener);
     }
@@ -81,6 +93,9 @@ public class BooksActivity extends AppCompatActivity implements LoaderCallbacks<
      */
     private void initLoader(String query) {
         Log.d(TAG, "initLoader");
+        mEmptyList.setVisibility(View.GONE);
+
+        mSpinnerLoader.setVisibility(View.VISIBLE);
 
         mQuery = query;
         LoaderManager loaderManager = getLoaderManager();
@@ -108,9 +123,21 @@ public class BooksActivity extends AppCompatActivity implements LoaderCallbacks<
         Log.d(TAG, "onLoadFinished");
         mAdapter.clear();
 
+        if (!isConnected()) {
+            mEmptyList.setVisibility(View.VISIBLE);
+            mEmptyList.setText(R.string.no_connection);
+            return;
+        }
+
+        mEmptyList.setVisibility(View.GONE);
+        mSpinnerLoader.setVisibility(View.GONE);
+
         Log.d(TAG, "onLoadFinished:are data null? " + (data == null));
         if (data != null && !data.isEmpty()) {
             mAdapter.addAll(data);
+        } else {
+            mEmptyList.setVisibility(View.VISIBLE);
+            mEmptyList.setText(getString(R.string.no_books, mQuery));
         }
     }
 

@@ -1,6 +1,7 @@
 package br.com.klauskpm.checkthatbook;
 
 
+import android.text.TextUtils;
 import android.util.Log;
 
 import org.json.JSONArray;
@@ -52,6 +53,10 @@ public class BooksSimpleApi extends QueryUtils {
             String response = requestGet(urlFinal);
 
             ArrayList<Book> books = new ArrayList<Book>();
+
+            if (TextUtils.isEmpty(response)) {
+                return books;
+            }
 
             try {
                 JSONObject responseJSON = new JSONObject(response);
