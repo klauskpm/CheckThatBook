@@ -113,6 +113,12 @@ public class BookAdapter extends ArrayAdapter<Book> {
         TextView previousPrice;
     }
 
+    /**
+     * Create the click listener to send to the info link
+     *
+     * @param book with the info link
+     * @return the click listener to access the info link
+     */
     private View.OnClickListener mInfoLinkOnClickListener(final Book book) {
         return new View.OnClickListener() {
             @Override
@@ -122,6 +128,12 @@ public class BookAdapter extends ArrayAdapter<Book> {
         };
     }
 
+    /**
+     * Create the click listener to send to the buy link
+     *
+     * @param book with the buy link
+     * @return the click listener to access the buy link
+     */
     private View.OnClickListener mBuyLinkOnClickListener(final Book book) {
         return new View.OnClickListener() {
             @Override
@@ -131,6 +143,11 @@ public class BookAdapter extends ArrayAdapter<Book> {
         };
     }
 
+    /**
+     * Open an external URL
+     *
+     * @param url to open
+     */
     private void openURL(String url) {
         Intent intent = new Intent(Intent.ACTION_VIEW);
         intent.setData(Uri.parse(url));

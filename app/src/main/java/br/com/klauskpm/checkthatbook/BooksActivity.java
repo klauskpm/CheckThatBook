@@ -27,6 +27,7 @@ public class BooksActivity extends AppCompatActivity implements LoaderCallbacks<
     private String mQuery = null;
     private BookAdapter mAdapter;
     private ConnectivityManager mConnectivityManager;
+    private SearchView mSearchView;
 
     private OnQueryTextListener mOnQueryTextListener = new OnQueryTextListener() {
         @Override
@@ -36,6 +37,7 @@ public class BooksActivity extends AppCompatActivity implements LoaderCallbacks<
                 initLoader(query);
             }
 
+            mSearchView.clearFocus();
             return true;
         }
 
@@ -52,7 +54,7 @@ public class BooksActivity extends AppCompatActivity implements LoaderCallbacks<
 
         mConnectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
 
-        SearchView searchView = (SearchView) findViewById(R.id.search_query);
+        mSearchView = (SearchView) findViewById(R.id.search_query);
 
         mAdapter = new BookAdapter(this, new ArrayList<Book>());
         GridView grid = (GridView) findViewById(R.id.list);
@@ -60,7 +62,7 @@ public class BooksActivity extends AppCompatActivity implements LoaderCallbacks<
         grid.setAdapter(mAdapter);
         grid.setEmptyView(findViewById(R.id.empty_list));
 
-        searchView.setOnQueryTextListener(mOnQueryTextListener);
+        mSearchView.setOnQueryTextListener(mOnQueryTextListener);
     }
 
     /**
