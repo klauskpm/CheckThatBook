@@ -3,5 +3,15 @@
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
 
+    <dimen name="container_inner_margin">8dp</dimen>
+
     <dimen name="interactive_item_height">48dp</dimen>
+
+    <dimen name="book_card_height">330dp</dimen>
+    <dimen name="book_card_width">160dp</dimen>
+
+    <dimen name="book_thumbnail_height">245dp</dimen>
+
+    <dimen name="text_size">12sp</dimen>
+    <dimen name="highlighted_text_size">14sp</dimen>
 </resources>

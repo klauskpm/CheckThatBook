@@ -1,77 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:layout_marginBottom="16dp"
-    android:gravity="center"
-    android:orientation="vertical">
+    style="@style/BookCard.BookContainer">
 
     <android.support.v7.widget.CardView
-        android:layout_width="160dp"
-        android:layout_height="330dp">
+        android:layout_width="@dimen/book_card_width"
+        android:layout_height="@dimen/book_card_height">
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+        <RelativeLayout style="@style/MatchParent">
 
             <ImageView
                 android:id="@+id/book_image"
-                android:layout_width="match_parent"
-                android:layout_height="245dp"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentTop="true" />
+                style="@style/BookCard.BookThumbnail" />
 
-            <TextView
-                android:id="@+id/book_title"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/book_image"
-                android:layout_marginBottom="2dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:fadingEdge="horizontal"
-                android:maxLines="1"
-                android:textSize="14sp"
-                tools:text="BOOK TITLE" />
+            <RelativeLayout
+                style="@style/BookCard.BookContentContainer"
+                android:layout_below="@id/book_image">
 
-            <TextView
-                android:id="@+id/book_author"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/book_title"
-                android:layout_marginEnd="8dp"
-                android:layout_marginStart="8dp"
-                android:fadingEdge="horizontal"
-                android:maxLines="1"
-                android:textSize="12sp"
-                tools:text="Book author"/>
+                <TextView
+                    android:id="@+id/book_title"
+                    style="@style/BookCard.Text.Title"
+                    tools:text="BOOK TITLE" />
 
-            <TextView
-                android:id="@+id/book_price"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                android:layout_alignParentEnd="true"
-                android:layout_marginBottom="8dp"
-                android:layout_marginEnd="8dp"
-                android:textColor="@color/colorAccent"
-                android:textSize="12sp"
-                android:textStyle="bold"
-                tools:text="R$4.28" />
+                <TextView
+                    android:id="@+id/book_author"
+                    style="@style/BookCard.Text.Subtitle"
+                    android:layout_below="@id/book_title"
+                    tools:text="Book author" />
 
-            <TextView
-                android:id="@+id/book_previous_price"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_above="@id/book_price"
-                android:layout_alignParentEnd="true"
-                android:layout_marginEnd="8dp"
-                android:textColor="@android:color/darker_gray"
-                android:textSize="12sp"
-                android:textStyle="bold"
-                tools:text="R$4.50" />
+                <TextView
+                    android:id="@+id/book_price"
+                    style="@style/BookCard.Text.Price.Highlight"
+                    tools:text="R$4.28" />
+
+                <TextView
+                    android:id="@+id/book_previous_price"
+                    style="@style/BookCard.Text.Price.Disabled"
+                    android:layout_above="@id/book_price"
+                    tools:text="R$4.50" />
+            </RelativeLayout>
         </RelativeLayout>
 
     </android.support.v7.widget.CardView>
