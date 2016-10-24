@@ -60,7 +60,10 @@ public class BooksSimpleApi extends QueryUtils {
 
             try {
                 JSONObject responseJSON = new JSONObject(response);
-                JSONArray items = responseJSON.getJSONArray("items");
+                JSONArray items = responseJSON.optJSONArray("items");
+
+                if (items == null)
+                    return books;
 
                 for (int i = 0; i < items.length(); i++) {
                     books.add(Book.extractFromJSON(items.getJSONObject(i)));
