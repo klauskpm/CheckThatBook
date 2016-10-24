@@ -7,39 +7,19 @@
 
     <SearchView
         android:id="@+id/search_query"
-        android:layout_width="match_parent"
-        android:layout_height="48dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:background="@android:color/white"
-        android:paddingEnd="@dimen/activity_horizontal_margin"
-        android:paddingStart="@dimen/activity_horizontal_margin"
-        android:queryHint="@string/search_hint" />
+        android:queryHint="@string/search_hint"
+        style="@style/SearchBox" />
 
     <GridView
         android:id="@+id/list"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
         android:layout_below="@+id/search_query"
-        android:clipToPadding="false"
-        android:horizontalSpacing="16dp"
-        android:numColumns="2"
-        android:paddingTop="16dp"
-        android:verticalSpacing="16dp" />
+        style="@style/BooksGrid" />
 
     <TextView
         android:id="@+id/empty_list"
-        style="?android:textAppearanceMedium"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:visibility="gone"/>
+        style="@style/EmptyText" />
 
     <ProgressBar
         android:id="@+id/spinner_loader"
-        style="@style/Base.Widget.AppCompat.ProgressBar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:visibility="gone" />
+        style="@style/SpinnerLoader" />
 </RelativeLayout>
