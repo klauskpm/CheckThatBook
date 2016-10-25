@@ -2,8 +2,12 @@ package br.com.klauskpm.checkthatbook.adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.support.annotation.NonNull;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,8 +15,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
-
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -58,7 +61,13 @@ public class BookAdapter extends ArrayAdapter<Book> {
             holder = (ViewHolder) convertView.getTag();
         }
 
-        Glide.with(getContext()).load(book.getThumbnailLink()).into(holder.thumbnail);
+        if (!book.hasThumbnailBeenSet())
+            new DownloadImageTask(book, holder.thumbnail).execute(book.getThumbnailLink());
+        else if (book.getThumbnailBitmap() != null)
+            holder.thumbnail.setImageBitmap(book.getThumbnailBitmap());
+        else
+            holder.thumbnail.setImageResource(0);
+//        Glide.with(getContext()).load(book.getThumbnailLink()).into(holder.thumbnail);
 
         holder.title.setText(book.getTitle());
 
@@ -154,5 +163,37 @@ public class BookAdapter extends ArrayAdapter<Book> {
         Intent intent = new Intent(Intent.ACTION_VIEW);
         intent.setData(Uri.parse(url));
         getContext().startActivity(intent);
+    }
+
+    private class DownloadImageTask extends AsyncTask<String, Void, Bitmap> {
+        Book book;
+        ImageView bmImage;
+
+        public DownloadImageTask(Book book, ImageView bmImage) {
+            this.book = book;
+            this.bmImage = bmImage;
+        }
+
+        protected Bitmap doInBackground(String... urls) {
+            String urldisplay = urls[0];
+            Bitmap mIcon11 = null;
+
+            if (urldisplay == null)
+                return null;
+
+            try {
+                InputStream in = new java.net.URL(urldisplay).openStream();
+                mIcon11 = BitmapFactory.decodeStream(in);
+            } catch (Exception e) {
+                Log.e("Error", e.getMessage());
+                e.printStackTrace();
+            }
+            return mIcon11;
+        }
+
+        protected void onPostExecute(Bitmap result) {
+            book.setThumbnailBitmap(result);
+            bmImage.setImageBitmap(book.getThumbnailBitmap());
+        }
     }
 }
