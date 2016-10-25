@@ -8,17 +8,9 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
-    <style name="MatchParent">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">match_parent</item>
-    </style>
-
-    <style name="WrapContent">
+    <style name="RelativelyCentered">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
-    </style>
-
-    <style name="RelativelyCentered" parent="WrapContent">
         <item name="android:layout_centerInParent">true</item>
     </style>
 
@@ -26,7 +18,7 @@
         <item name="android:visibility">gone</item>
     </style>
 
-    <style name="SearchBox" parent="AlignParentTopStart">
+    <style name="SearchBox">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">@dimen/interactive_item_height</item>
         <item name="android:background">@android:color/white</item>
@@ -34,7 +26,9 @@
         <item name="android:paddingStart">@dimen/activity_horizontal_margin</item>
     </style>
 
-    <style name="BooksGrid" parent="MatchParent">
+    <style name="BooksGrid">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
         <item name="android:clipToPadding">false</item>
         <item name="android:horizontalSpacing">@dimen/activity_horizontal_margin</item>
         <item name="android:numColumns">2</item>
@@ -59,22 +53,16 @@
         <item name="android:orientation">vertical</item>
     </style>
 
-    <style name="AlignParentTopStart">
+    <style name="BookCard.BookThumbnail">
         <item name="android:layout_alignParentTop">true</item>
         <item name="android:layout_alignParentStart">true</item>
-    </style>
-
-    <style name="AlignParentBottomEnd">
-        <item name="android:layout_alignParentBottom">true</item>
-        <item name="android:layout_alignParentEnd">true</item>
-    </style>
-
-    <style name="BookCard.BookThumbnail" parent="AlignParentTopStart">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">@dimen/book_thumbnail_height</item>
     </style>
 
-    <style name="BookCard.BookContentContainer" parent="MatchParent">
+    <style name="BookCard.BookContentContainer">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
         <item name="android:layout_margin">@dimen/container_inner_margin</item>
     </style>
 
@@ -84,7 +72,9 @@
         <item name="android:textSize">@dimen/text_size</item>
     </style>
 
-    <style name="BookCard.Text.Title" parent="AlignParentTopStart">
+    <style name="BookCard.Text.Title">
+        <item name="android:layout_alignParentTop">true</item>
+        <item name="android:layout_alignParentStart">true</item>
         <item name="android:layout_marginBottom">2dp</item>
         <item name="android:fadingEdge">horizontal</item>
         <item name="android:maxLines">1</item>
@@ -97,13 +87,15 @@
         <item name="android:maxLines">1</item>
     </style>
 
-    <style name="BookCard.Text.Wrapped" parent="WrapContent"/>
-
-    <style name="BookCard.Text.Price" parent="BookCard.Text.Wrapped">
+    <style name="BookCard.Text.Price">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
         <item name="android:textStyle">bold</item>
     </style>
 
-    <style name="BookCard.Text.Price.Highlight" parent="AlignParentBottomEnd">
+    <style name="BookCard.Text.Price.Highlight">
+        <item name="android:layout_alignParentBottom">true</item>
+        <item name="android:layout_alignParentEnd">true</item>
         <item name="android:textColor">@color/colorAccent</item>
     </style>
 
