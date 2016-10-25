@@ -16,7 +16,7 @@ import static android.content.ContentValues.TAG;
 /**
  * Created by Kazlauskas on 22/10/2016.
  */
-public class QueryUtils {
+public final class QueryUtils {
     /**
      * The constant CONNECT_TIMEOUT.
      */
@@ -31,6 +31,8 @@ public class QueryUtils {
     protected static String CHARSET = "UTF-8";
 
     private static final String GET = "GET";
+
+    private QueryUtils() {}
 
     /**
      * Request string.
