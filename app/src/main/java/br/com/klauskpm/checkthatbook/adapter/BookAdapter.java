@@ -37,26 +37,25 @@ public class BookAdapter extends ArrayAdapter<Book> {
     @NonNull
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        View root = convertView;
         ViewHolder holder;
         Book book = getItem(position);
         assert book != null;
 
-        if (root == null) {
-            root = LayoutInflater.from(getContext()).inflate(
+        if (convertView == null) {
+            convertView = LayoutInflater.from(getContext()).inflate(
                     R.layout.book_item, parent, false
             );
 
             holder = new ViewHolder();
-            holder.thumbnail = (ImageView) root.findViewById(R.id.book_image);
-            holder.title = (TextView) root.findViewById(R.id.book_title);
-            holder.authors = (TextView) root.findViewById(R.id.book_author);
-            holder.price = (TextView) root.findViewById(R.id.book_price);
-            holder.previousPrice = (TextView) root.findViewById(R.id.book_previous_price);
+            holder.thumbnail = (ImageView) convertView.findViewById(R.id.book_image);
+            holder.title = (TextView) convertView.findViewById(R.id.book_title);
+            holder.authors = (TextView) convertView.findViewById(R.id.book_author);
+            holder.price = (TextView) convertView.findViewById(R.id.book_price);
+            holder.previousPrice = (TextView) convertView.findViewById(R.id.book_previous_price);
 
-            root.setTag(holder);
+            convertView.setTag(holder);
         } else {
-            holder = (ViewHolder) root.getTag();
+            holder = (ViewHolder) convertView.getTag();
         }
 
         Glide.with(getContext()).load(book.getThumbnailLink()).into(holder.thumbnail);
@@ -90,7 +89,7 @@ public class BookAdapter extends ArrayAdapter<Book> {
         holder.price.setOnClickListener(mBuyLinkOnClickListener(book));
         holder.previousPrice.setOnClickListener(mBuyLinkOnClickListener(book));
 
-        return root;
+        return convertView;
     }
 
     private class ViewHolder {
