@@ -1,4 +1,4 @@
-package br.com.klauskpm.checkthatbook;
+package br.com.klauskpm.checkthatbook.utils;
 
 import android.util.Log;
 

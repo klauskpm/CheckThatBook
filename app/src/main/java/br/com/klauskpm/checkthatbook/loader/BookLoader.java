@@ -1,10 +1,13 @@
-package br.com.klauskpm.checkthatbook;
+package br.com.klauskpm.checkthatbook.loader;
 
 import android.content.AsyncTaskLoader;
 import android.content.Context;
 import android.util.Log;
 
 import java.util.ArrayList;
+
+import br.com.klauskpm.checkthatbook.Book;
+import br.com.klauskpm.checkthatbook.api.BooksSimpleApi;
 
 /**
  * Created by Kazlauskas on 22/10/2016.

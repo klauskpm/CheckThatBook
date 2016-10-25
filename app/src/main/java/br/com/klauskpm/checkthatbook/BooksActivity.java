@@ -18,6 +18,9 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
+import br.com.klauskpm.checkthatbook.adapter.BookAdapter;
+import br.com.klauskpm.checkthatbook.loader.BookLoader;
+
 /**
  * The type Books activity.
  */

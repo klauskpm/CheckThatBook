@@ -1,4 +1,4 @@
-package br.com.klauskpm.checkthatbook;
+package br.com.klauskpm.checkthatbook.adapter;
 
 import android.content.Context;
 import android.content.Intent;
@@ -15,6 +15,9 @@ import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import br.com.klauskpm.checkthatbook.Book;
+import br.com.klauskpm.checkthatbook.R;
 
 /**
  * Created by Kazlauskas on 22/10/2016.

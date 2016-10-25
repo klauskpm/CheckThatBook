@@ -1,4 +1,4 @@
-package br.com.klauskpm.checkthatbook;
+package br.com.klauskpm.checkthatbook.api;
 
 
 import android.text.TextUtils;
@@ -9,6 +9,9 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+
+import br.com.klauskpm.checkthatbook.Book;
+import br.com.klauskpm.checkthatbook.utils.QueryUtils;
 
 /**
  * Created by Kazlauskas on 22/10/2016.
