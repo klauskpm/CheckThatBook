@@ -38,13 +38,8 @@ public class BooksActivity extends AppCompatActivity implements LoaderCallbacks<
         @Override
         public boolean onQueryTextSubmit(String query) {
             mAdapter.clear();
-            if (isConnected()) {
-                Log.d(TAG, "onQueryTextSubmit");
-                initLoader(query);
-            } else {
-                mEmptyList.setVisibility(View.VISIBLE);
-                mEmptyList.setText(getString(R.string.no_connection));
-            }
+            Log.d(TAG, "onQueryTextSubmit");
+            initLoader(query);
 
             mSearchView.clearFocus();
             return true;
@@ -94,6 +89,12 @@ public class BooksActivity extends AppCompatActivity implements LoaderCallbacks<
     private void initLoader(String query) {
         Log.d(TAG, "initLoader");
         mEmptyList.setVisibility(View.GONE);
+
+        if (!isConnected()) {
+            mEmptyList.setVisibility(View.VISIBLE);
+            mEmptyList.setText(getString(R.string.no_connection));
+            return;
+        }
 
         mSpinnerLoader.setVisibility(View.VISIBLE);
 
