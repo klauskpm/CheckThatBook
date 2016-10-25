@@ -8,6 +8,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 
 import br.com.klauskpm.checkthatbook.Book;
@@ -47,10 +49,15 @@ public class BooksSimpleApi extends QueryUtils {
         private static ArrayList<Book> listVolumes(String query) {
             String url = COLLECTION_URL;
 
-            String urlFinal = url + "?q=" + query +
-                    "&download=" + DOWNLOAD +
-                    "&&maxResults=" + MAX_RESULTS +
-                    "&showPreorders=" + SHOW_PREORDERS;
+            String urlFinal = null;
+            try {
+                urlFinal = url + "?q=" + URLEncoder.encode(query, "UTF-8") +
+                        "&download=" + DOWNLOAD +
+                        "&&maxResults=" + MAX_RESULTS +
+                        "&showPreorders=" + SHOW_PREORDERS;
+            } catch (UnsupportedEncodingException e) {
+                e.printStackTrace();
+            }
 
             Log.d("KAZLAUSKAS", "listVolumes: " + urlFinal);
 
