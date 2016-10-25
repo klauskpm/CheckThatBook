@@ -11,7 +11,7 @@ import java.util.ArrayList;
  * Created by Kazlauskas on 22/10/2016.
  */
 public class Book {
-    private String mThumbnailLink;
+    private String mThumbnailLink = null;
     private String mTitle;
     private ArrayList<String> mAuthors = new ArrayList<String>();
     private Double mPrice = null;
@@ -181,8 +181,14 @@ public class Book {
     public static Book extractFromJSON(JSONObject bookJSON) throws JSONException {
         // Volume info
         JSONObject volumeInfo = bookJSON.getJSONObject("volumeInfo");
-        String thumbnailLink = volumeInfo.getJSONObject("imageLinks").getString("smallThumbnail");
+
+        JSONObject imageLinks = volumeInfo.optJSONObject("imageLinks");
+        String thumbnailLink = null;
+        if (imageLinks != null)
+            thumbnailLink = imageLinks.getString("smallThumbnail");
+
         String title = volumeInfo.getString("title");
+
         JSONArray authorsArray = volumeInfo.optJSONArray("authors");
         ArrayList<String> authors = new ArrayList<String>();
         if (authorsArray != null) {
