@@ -109,7 +109,7 @@ public final class QueryUtils {
                 inputStream = urlConnection.getInputStream();
                 response = readFromStream(inputStream);
             } else {
-                Log.d(TAG, "Error response code " + urlConnection.getResponseCode());
+                Log.e(TAG, "Error response code " + urlConnection.getResponseCode());
             }
 
         } catch (IOException e) {
