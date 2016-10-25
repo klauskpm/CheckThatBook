@@ -35,13 +35,14 @@ public class BooksSimpleApi extends QueryUtils {
     }
 
     private static class BooksVolumes {
-        private final static String COLLECTION_URL = "volumes";
+        private final static String COLLECTION_URL = BooksSimpleApi.BASE_URL + "volumes";
+
         private final static String DOWNLOAD = "epub";
-        private final static int MAX_RESULTS = 10;
-        private final static String SHOW_PREORDERS = "false";
+        private static int MAX_RESULTS = 10;
+        private static String SHOW_PREORDERS = "false";
 
         private static ArrayList<Book> listVolumes(String query) {
-            String url = BooksSimpleApi.BASE_URL + COLLECTION_URL;
+            String url = COLLECTION_URL;
 
             String urlFinal = url + "?q=" + query +
                     "&download=" + DOWNLOAD +
