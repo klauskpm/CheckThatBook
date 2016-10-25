@@ -1,7 +1,5 @@
 package br.com.klauskpm.checkthatbook;
 
-import android.graphics.Bitmap;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -24,9 +22,6 @@ public class Book {
 
     private String mFormattedPrice = null;
     private String mFormattedPreviousPrice = null;
-
-    private Bitmap mThumbnailBitmap = null;
-    private boolean mThumbnailSet = false;
 
     private final static String BRL_CURRENCY_CODE = "BRL";
 
@@ -174,34 +169,6 @@ public class Book {
      */
     public String getFormattedPreviousPrice() {
         return mFormattedPreviousPrice;
-    }
-
-    /**
-     * Gets thumbnail bitmap.
-     *
-     * @return the thumbnail bitmap
-     */
-    public Bitmap getThumbnailBitmap() {
-        return mThumbnailBitmap;
-    }
-
-    /**
-     * Sets thumbnail bitmap.
-     *
-     * @param bitmap the bitmap
-     */
-    public void setThumbnailBitmap(Bitmap bitmap) {
-        this.mThumbnailBitmap = bitmap;
-        this.mThumbnailSet = true;
-    }
-
-    /**
-     * Returns if thumbnail has been set.
-     *
-     * @return the boolean
-     */
-    public boolean hasThumbnailBeenSet() {
-        return this.mThumbnailSet;
     }
 
     /**
