@@ -3,4 +3,5 @@
     <string name="app_name">Olha Esse Livro</string>
     <string name="no_books">Não tem livro para o termo \'%s\'</string>
     <string name="no_connection">Não tem conexão</string>
+    <string name="search_for_response">Procure por um livro ou categoria</string>
 </resources>

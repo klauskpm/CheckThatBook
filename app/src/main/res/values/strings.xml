@@ -3,4 +3,5 @@
     <string name="search_hint" translatable="false">Android, Nicholas Sparks</string>
     <string name="no_connection">There is no connection</string>
     <string name="no_books">There is no book for \'%s\'</string>
+    <string name="search_for_response">Search for a book or category</string>
 </resources>
